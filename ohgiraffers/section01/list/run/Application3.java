@@ -205,24 +205,45 @@ public class Application3 {
      * 5. 도서 제거
      */
     private void deleteBook(){
-        System.out.print("\n*** 도서 제거 ***\n");
+    System.out.print("\n*** 도서 제거 ***\n");
 
-        System.out.print("제거할 도서 번호 입력 : ");
-        int bookNumber = sc.nextInt();
-        sc.nextLine();
+    System.out.print("제거할 도서 번호 입력 : ");
+    int bookNumber = sc.nextInt();
+    sc.nextLine();
 
-        // 서비스 호출
-        BookDTO deletedBook = bookService.deleteBook(bookNumber);
+    // 삭제 전에 상세 정보 미리 보기 추가
+    BookDTO target = bookService.selectBookNumber(bookNumber);
 
-        if(deletedBook == null){
-            System.out.println("@@@ 일치하는 번호의 책이 없습니다. @@@");
-            return;
-        }
 
-        System.out.println(deletedBook.getTitle() + "이/가 제거 되었습니다.");
-
+    if(target == null){
+      System.out.println("해당 번호의 책이 존재하지 않습니다. ");
+      return;
     }
 
+    // 상세 정보 출력
+    System.out.println("\n [삭제하려는 책 정보] ");
+    System.out.println("번호: " + target.getNumber());
+    System.out.println("제목: " + target.getTitle());
+    System.out.println("저자: " + target.getAuthor());
+    System.out.println("가격: " + target.getPrice() + "원");
+
+    // 삭제 하시겠어요 ? Y/N 확인
+    System.out.print("\n 정말 삭제할까요? (Y/N) : ");
+    String answer =  sc.nextLine().trim().toUpperCase();
+
+    if(!answer.equals("Y") && !answer.equals("YES")){
+      System.out.println("삭제가 취소되었습니다.");
+      return;
+    }
+
+    BookDTO deletedBook = bookService.delectBook(bookNumber);
+
+    if(deletedBook == null){
+      System.out.println("삭제 실패: 책이 존재하지 않습니다.");
+      return;
+    }
+    System.out.println(deletedBook.getTitle() + "(이/가) 제거 되었습니다.");
+  }
     /**
      * 6. 도서 검색
      */
@@ -264,3 +285,4 @@ public class Application3 {
         }
     }
 }
+

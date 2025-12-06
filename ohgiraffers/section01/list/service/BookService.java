@@ -17,11 +17,11 @@ public class BookService {
         bookList = new ArrayList<>();
 
         /* 도서 정보 추가 */
-        bookList.add(new BookDTO(1, "홍길동전", "허균", 50000));
-        bookList.add(new BookDTO(2, "목민심서", "정약용", 30000));
-        bookList.add(new BookDTO(3, "동의보감", "허준", 40000));
-        bookList.add(new BookDTO(4, "삼국사기", "김부식", 46000));
-        bookList.add(new BookDTO(5, "삼국유사", "일연", 58000));
+        bookList.add(new BookDTO(1, "홍길동전", "허균", "소설", "한빛", 2006, 50000, true, "bad"));
+        bookList.add(new BookDTO(2, "목민심서", "정약용", "역사", "한국사랑", 2012, 30000, true, "fine"));
+        bookList.add(new BookDTO(3, "동의보감", "허준", "의학", "뉴빛미디어", 2010, 40000, true, "fine"));
+        bookList.add(new BookDTO(4, "삼국사기", "김부식", "역사", "한국사랑", 2007, 46000, true, "good"));
+        bookList.add(new BookDTO(5, "삼국유사", "일연", "역사", "한국사랑", 2007, 58000, true, "fine"));
     }
 
     // getter

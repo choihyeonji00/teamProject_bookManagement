@@ -236,9 +236,11 @@ public class Application3 {
       return;
     }
 
-    BookDTO deletedBook = bookService.delectBook(bookNumber);
+    //BookDTO deletedBook = bookService.delectBook(bookNumber);
+        BookDTO deletedBook = bookService.deleteBook(bookNumber);
 
-    if(deletedBook == null){
+
+        if(deletedBook == null){
       System.out.println("삭제 실패: 책이 존재하지 않습니다.");
       return;
     }

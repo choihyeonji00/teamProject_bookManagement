@@ -98,7 +98,12 @@ public class Application3 {
         System.out.println("책 번호: " + book.getNumber());
         System.out.println("책 제목: " + book.getTitle());
         System.out.println("책 저자: " + book.getAuthor());
+        System.out.println("책 분류: " + book.getGenre());
+        System.out.println("출판사: " + book.getPublisher());
+        System.out.println("출판년도: " + book.getYear());
         System.out.println("책 가격: " + book.getPrice() + "원");
+        System.out.println("대여가능 여부: " + book.isAvailable() + "원");
+        System.out.println("책 상태: " + book.getCondition() + "원");
     }
 
     /**
@@ -113,16 +118,38 @@ public class Application3 {
         System.out.print("책 저자 입력 : ");
         String author = sc.nextLine();
 
+        System.out.print("책 분류 입력 : ");
+        String genre = sc.nextLine();
+
+        System.out.print("출판사 입력 : ");
+        String publisher = sc.nextLine();
+
+        System.out.print("출판년도 입력 : ");
+        int year = sc.nextInt();
+        sc.nextLine();
+
         System.out.print("책 가격 입력 : ");
         int price = sc.nextInt();
         sc.nextLine();
+
+        System.out.print("대여가능 여부 입력 : ");
+        boolean isAvailable = sc.nextBoolean();
+        sc.nextLine();
+
+        System.out.print("책 상태 입력 : ");
+        String condition = sc.nextLine();
 
         // DTO(Data Transfer Object) : 계층간 데이터 전달 목적의 객체
         // BookDTO 객체 생성 및 값 대입
         BookDTO book = new BookDTO();
         book.setTitle(title);
         book.setAuthor(author);
+        book.setGenre(genre);
+        book.setPublisher(publisher);
+        book.setYear(year);
         book.setPrice(price);
+        book.setAvailable(isAvailable);
+        book.setCondition(condition);
 
         // 서비스 호출
         int bookNumber = bookService.addBook(book);
